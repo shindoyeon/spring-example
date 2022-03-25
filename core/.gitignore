@@ -1,0 +1,6 @@
+HELP.md
+build/
+.gradle
+.idea
+out/
+.DS_Store
