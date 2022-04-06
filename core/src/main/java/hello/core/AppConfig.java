@@ -14,9 +14,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig  {
+
     //역할
     @Bean //스프링컨테이너에 등록됨
     public MemberService memberService(){
+        System.out.println("call AppConfig.memberService");
         //이 반환된 객체를 스프링 컨테이너에 등록 -> 등록된 객체를 스프링 빈 객체라고 한다
         return new MemberServiceImpl(memberRepository());
     }
@@ -24,12 +26,14 @@ public class AppConfig  {
     //구현(나중에 변경할 일이 있을 경우 구현부만 수정하면 된다.)
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     //역할
     @Bean
     public OrderService orderService(){
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
