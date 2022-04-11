@@ -2,7 +2,10 @@ package hello.core.discount;
 
 import hello.core.member.Grade;
 import hello.core.member.Member;
+import org.springframework.stereotype.Component;
 
+//구현체에 @Component를 붙여준다
+@Component
 public class RateDiscountPolicy implements DiscountPolicy{
 
     private final int discountPercent = 10;
