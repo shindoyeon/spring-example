@@ -1,5 +1,6 @@
 package hello.core.order;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
@@ -40,7 +41,7 @@ public class OrderServiceImpl implements OrderService{
     //@Autowired 는 1. 타입 매칭, 2. 타입 매칭의 결과가 2개 이상일 때 필드명, 파라미터명으로 빈 이름 매칭
    @Autowired
     //생성자 주입
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
        System.out.println("1. OrderServiceImpl.OrderServiceImpl");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;

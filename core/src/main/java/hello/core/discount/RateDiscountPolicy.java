@@ -1,5 +1,6 @@
 package hello.core.discount;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -8,7 +9,8 @@ import org.springframework.stereotype.Component;
 
 
 @Component //구현체에 @Component를 붙여준다
-@Primary // @Autowired 시에 여러 빈이 매칭되면 @Primary가 우선권을 가진다
+@MainDiscountPolicy
+//@Primary // @Autowired 시에 여러 빈이 매칭되면 @Primary가 우선권을 가진다
 public class RateDiscountPolicy implements DiscountPolicy{
 
     private final int discountPercent = 10;
