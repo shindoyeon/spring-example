@@ -1,10 +1,10 @@
 package hello.core.lifecycle;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
+import javax. annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 //InitializingBean, DisposableBean: 인터페이스를 사용하는 초기화, 종료 방법(스프링 초기, 현재는 거의 사용하지 않음)
-public class NetworkClient implements InitializingBean, DisposableBean {
+public class NetworkClient {
 
     private String url;
 
@@ -31,16 +31,17 @@ public class NetworkClient implements InitializingBean, DisposableBean {
         System.out.println("close: " + url);
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("NetworkClient.afterPropertiesSet");
+    //애노테이션 사용하여 빈 등록 초기화, 최근 스프링에서 가장 권장하는 방법
+    @PostConstruct
+    public void init() throws Exception {
+        System.out.println("NetworkClient.init");
         connect();
         call("초기화 연결 메시지");
     }
 
-    @Override
-    public void destroy() throws Exception {
-        System.out.println("NetworkClient.destroy");
+    @PreDestroy
+    public void close() throws Exception {
+        System.out.println("NetworkClient.close");
         disconnect();
     }
 }

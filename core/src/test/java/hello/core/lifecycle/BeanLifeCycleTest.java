@@ -19,6 +19,8 @@ public class BeanLifeCycleTest {
     @Configuration
     static class LifeCycleConfig {
 
+        //빈 등록 초기화, 소멸(destroyMethod는 추론 기능이 있기 때문에 'close', 'shutdown' 이라는 이름을 자동 호출)
+//        @Bean(initMethod = "init", destroyMethod = "close")
         @Bean
         public NetworkClient networkClient() {
             //생성자 함수 -> setUrl -> afterPropertiesSet -> destroy
